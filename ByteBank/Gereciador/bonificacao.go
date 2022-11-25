@@ -2,7 +2,7 @@ package gerenciador
 
 //totalBonificacao é tipo private
 /* Em GO para definir tipo privado basta começar ele
-   com letra minuscula.
+   com letra minuscula. 
 */
 var totalBonificacao float64
 

@@ -2,17 +2,10 @@ package main
 
 import (
 	"fmt"
-	"math"
 	diretor "trabalho/ByteBank/Funcionarios/Diretor"
 	funcionario "trabalho/ByteBank/Funcionarios/Funcionario"
 	gerenciador "trabalho/ByteBank/Gereciador"
 )
-
-// roundFloat define as casas decimais do valor float
-func roundFloat(val float64, precision uint) float64 {
-	ratio := math.Pow(10, float64(precision))
-	return math.Round(val*ratio) / ratio
-}
 
 func main() {
 	//carlos é declarador como tipo Funcionario
@@ -30,20 +23,21 @@ func main() {
 	roberta.CPF = "454.658.148-3"
 	roberta.Salario = 5000
 
-	//robertaTeste receber  roberta do tipo diretor
+	//robertaTeste receber a referncia do tipo diretor
 	robertaTeste := roberta
 
-	fmt.Println("Bonificacao de uma referencia de Diretor:", roundFloat(roberta.GetBonificacao(), 2))
-	fmt.Println("Bonificacao de uma referencia de Funcionario:", roundFloat(robertaTeste.GetBonificacao(), 2))
+	fmt.Printf("\nBonificacao de uma referencia de Diretor: %.2f", roberta.GetBonificacao())
+	fmt.Printf("\nBonificacao de uma referencia de Funcionario: %.2f\n\n", robertaTeste.GetBonificacao())
 
 	gerenciador.Registrar(roberta)
 
 	fmt.Println(carlos.Nome)
-	fmt.Println(roundFloat(carlos.GetBonificacao(), 2))
+	fmt.Printf("%.2f\n\n", carlos.GetBonificacao())
 
 	fmt.Println(roberta.Nome)
-	fmt.Println(roundFloat(roberta.GetBonificacao(), 2))
+	fmt.Printf("%.2f\n\n",roberta.GetBonificacao())
 
-	fmt.Println("Total de bonificações:", roundFloat(gerenciador.GetTotalBonificacao(), 2))
+	fmt.Printf("Total de bonificações: %.2f", gerenciador.GetTotalBonificacao())
+  
 	fmt.Scanf("%d")
 }
